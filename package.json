@@ -1,0 +1,32 @@
+{
+  "name": "phytons-site",
+  "version": "1.0.0",
+  "description": "Site of Mikhail Kryuchkov",
+  "main": "app.js",
+  "scripts": {
+    "dev": "parcel watch src/index.pug",
+    "build": "parcel src/index.pug"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-redux": "4.4.9",
+    "redux": "4.0.0"
+  },
+  "author": "phytonmk",
+  "license": "ISC",
+  "jshintConfig": {
+    "esnext": true,
+    "lastsemic": true,
+    "experimental": [
+      "asyncawait",
+      "asyncreqawait"
+    ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.0",
+    "parcel-bundler": "^1.9.3",
+    "pug": "^2.0.3"
+  }
+}
