@@ -1,38 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import axios from 'axios';
 
 import { store, setMsgStatus } from '../../redux-store.js';
 
 import SubmitButton from './SubmitButton.jsx'
-
 
 class Messenger extends React.Component {
   constructor (props) {
     super(props);
     this.handleTyping = this.handleTyping.bind(this);
     this.state = {username: '', usertext: ''};
-    const macrosUrl = 'https://script.googleusercontent.com/macros/echo?' + 
-      'user_content_key=xvA-TtKs6NbSNujGyPrIvwbPhWd7_sCk1OGnRTkZy5HXmashy' + 
-      'iiBXZXkHYEJbN1IykMG36BkkbtObTAM9qo-8o0ljXZw1TY_m5_BxDlH2jW0nuo2oDe' +
-      'mN9CCS2h10ox_1xSncGQajx_ryfhECjZEnLG30VBsWsP24Ts_1y3eRJFUDm6qLS4P8On' + 
-      'WNY8igKJOXZVrA765_5P_7kK4Fz4tHtP_ArQgNVAy&lib=M5Z5ZMDmJkri_1JvPh4t7vmCmJYRmcQB5';
+    const macrosUrl = 'https://script.google.com/macros/s/AKfycbzLDy5pQBSTSeEe83h1H8pMbojeqiz2_EFSB8Tx84JmSQjqYzTO/exec';
     store.subscribe(() => {
       if (store.getState().msgStatus === 'sending') {
-        axios.post(macrosUrl, {username: this.state.username, usertext: this.state.usertext}, {
-          proxy: {
-            host: 'sr123.spry.fail',
-            port: 1080,
-            auth: {
-              username: 'telegram',
-              password: 'telegram'
-            }
-          },
-        }).then(() => {
+        const xhr = new XMLHttpRequest();
+        const url = `https://script.google.com/macros/s/AKfycbzLDy5pQBSTSeEe83h1H8pMbojeqiz2_EFSB8Tx84JmSQjqYzTO/exec?username=${encodeURIComponent(this.state.username)}&usertext=${encodeURIComponent(this.state.usertext)}`
+        xhr.open('GET', url, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState != 4) return;
           setMsgStatus('delivered');
-        }).catch(() => {
-          setMsgStatus('error');
-        });
+          if (xhr.status != 200) {
+            setMsgStatus('error');
+          }
+        }
       }
     });
   }

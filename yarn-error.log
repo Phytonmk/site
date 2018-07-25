@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add redux-store.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add app.jsx
 
 PATH: 
   C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;D:\projects\site\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;D:\WebServers\usr\local\php5;C:\ProgramData\ComposerSetup\bin;C:\Program Files\GnuWin32\bin;C:\Program Files\PuTTY\;C:\Program Files (x86)\Brackets\command;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\OpenVPN\bin;C:\Program Files (x86)\Yarn\bin;C:\ProgramData\chocolatey\bin;C:\tools\go\bin;C:\Program Files\Geth;C:\Program Files\nodejs\;C:\WINDOWS\System32\OpenSSH\;C:\Users\phyto\AppData\Roaming\local\bin;C:\Users\phyto\AppData\Local\Programs\Python\Python35\Scripts\;C:\Users\phyto\AppData\Local\Programs\Python\Python35\;C:\Users\phyto\AppData\Local\Microsoft\WindowsApps;C:\Users\phyto\AppData\Local\atom\bin;C:\Users\phyto\AppData\Roaming\Composer\vendor\bin;C:\Program Files (x86)\FreeArc\bin;C:\Users\phyto\AppData\Local\GitHubDesktop\bin;C:\Users\phyto\AppData\Local\Yarn\bin;D:\mongo\bin;D:\Program Files\MongoDB\Server\3.6\bin;C:\Users\phyto\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\mingw-w64\i686-7.2.0-posix-dwarf-rt_v5-rev1\mingw32\bin;;C:\Users\phyto\AppData\Roaming\npm
@@ -4829,7 +4829,7 @@ Lockfile:
       window-size "0.1.0"
 
 Trace: 
-  Error: https://registry.npmjs.org/redux-store.js: Not found
+  Error: https://registry.npmjs.org/app.jsx: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:60302:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:117370:22)
       at Request.emit (events.js:182:13)

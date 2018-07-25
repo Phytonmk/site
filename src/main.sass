@@ -45,9 +45,8 @@ html, body, #root, #provider-wrapper
   left: calc(50% - 552.5px)
   top: calc(50% - 378.5px)
   z-index: 1
-  &.form-0
-    -webkit-clip-path: polygon(0 30%, 100% 41%, 96% 84%, 13% 69%)
-    clip-path: polygon(0 30%, 100% 41%, 96% 84%, 13% 69%)
+  -webkit-clip-path: polygon(0 30%, 100% 41%, 96% 84%, 13% 69%)
+  clip-path: polygon(0 30%, 100% 41%, 96% 84%, 13% 69%)
   &.form-1
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%)
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%)
@@ -97,14 +96,25 @@ h2
     display: flex
     justify-content: space-around
     .stack-block
+      &:nth-of-type(1) ul
+        text-align: left
+      &:nth-of-type(2) ul
+        text-align: center
+      &:nth-of-type(3) ul
+        text-align: right
       h3
         font-size: 70px
         margin-bottom: 0px
       ul
-        margin-top: 0px
+        margin-top: 10px
         list-style-type: none
         padding-left: 0px
         font-size: 30px
+        border: 1px solid white
+        border-left: 0px
+        border-right: 0px
+        padding-top: 20px
+        padding-bottom: 20px
   .stack-string
     font-size: 30px
     margin-top: 50px
@@ -219,6 +229,7 @@ figure.pic-container
     text-align: center
     input, textarea, button
       width: 350px;
+      max-width: calc(100% - 36px)
       padding: 10px
       border: 8px solid white
       margin-top: 20px
@@ -320,7 +331,9 @@ figure.pic-container
           text-align: center
     .contacts-container
       justify-content: space-around !important
-
+@media (max-width: 960px)
+  .dark-shape
+    transition: none
 @media (max-width: 880px)
   #name-section
     h2
@@ -332,11 +345,11 @@ figure.pic-container
       .stack-block
         text-align: center
 
-@media (max-width: 800px)
-  .dark-shape
-    transform: scaleX(2)
-
 @media (max-width: 750px)
+  #stack-section
+    .stack-string
+      padding-left: 25px
+      padding-right: 25px
   #projects-section
     .project-container
       text-align: center
@@ -349,5 +362,24 @@ figure.pic-container
       align-items: center
       & > div
         margin-top: 50px
+
+@media (max-width: 400px)
+  .dark-shape
+    -webkit-clip-path: polygon(5% 0, 95% 0, 95% 100%, 5% 100%) !important 
+    clip-path: polygon(5% 0, 95% 0, 95% 100%, 5% 100%) !important 
+  #name-section
+    h1
+      font-size: 60px
+@media (max-width: 350px)
+  #name-section
+    h1
+      font-size: 50px
+@media (max-width: 290px)
+
+  #name-section
+    h1
+      font-size: 25px
+    h2
+      font-size: 20px
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono')

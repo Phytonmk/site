@@ -1,5 +1,73 @@
 import { store, setScreen } from './redux-store.js';
-import { EPPZScrollTo } from './EPPZScrollTo.js';
+import { EPPZScrollTo } from './eppzscrollto.js';
+
+const getScrollOffset = (screen) => {
+  let offset = scrollKeyPossitions[screen][0].offset || 0;
+  for (let offsets of scrollKeyPossitions[screen])
+    if (offsets.maxHeight !== 'infinite' && offsets.maxHeight > document.body.clientHeight) {
+      offset = offsets.offset;
+      break;
+    } else {
+      offset = offsets.offset;
+    }
+  return offset;
+}
+
+let scrollTimeout = null;
+const scrollHandler = (currentSection) => {
+  global.lastScrollEvent = Date.now();
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    let forcedSection = false;
+    if (!currentSection) {
+      const scrollTop = window.pageYOffset;
+      const sections = document.querySelectorAll('section');
+      if (sections.length === 0)
+        return;
+      currentSection = sections[0];
+      for (let section of sections) {
+        if (scrollTop + document.body.offsetHeight * 3/4 > section.offsetTop) {
+          currentSection = section;
+        }
+      }
+    } else {
+      forcedSection = true;
+    }
+    const lastScreen = store.getState().screen;
+    let offset = 0;
+    switch (currentSection.id) {
+      case 'name-section':
+        setScreen(0);
+        offset = getScrollOffset(0);
+        break;
+      case 'stack-section':
+        setScreen(1);
+        offset = getScrollOffset(1);
+        break;
+      case 'projects-section':
+        setScreen(2);
+        offset = getScrollOffset(2);
+        break;
+      case 'person-section':
+        setScreen(3);
+        offset = getScrollOffset(3);
+        break;
+      case 'messenger-section':
+        setScreen(4);
+        offset = getScrollOffset(4);
+        break;
+    }
+    if (document.body.offsetWidth > 960 && lastScreen !== store.getState().screen && currentSection.id/* && store.getState().scrollReactions*/) {
+      EPPZScrollTo.scrollVerticalToElementById(currentSection.id, offset);
+    } else if (forcedSection) {
+      window.scrollTo(0, document.getElementById(currentSection.id).offsetTop);
+    }
+  }, 50);
+}
+if (typeof window !== 'undefined')
+  setTimeout(() => scrollHandler(document.querySelector('#name-section')), 0);
+
+export { scrollHandler };
 
 const scrollKeyPossitions = [
   [
@@ -97,60 +165,3 @@ const scrollKeyPossitions = [
     }
   ],
 ];
-
-const getScrollOffset = (screen) => {
-  let offset = scrollKeyPossitions[screen][0].offset || 0;
-  for (let offsets of scrollKeyPossitions[screen])
-    if (offsets.maxHeight !== 'infinite' && offsets.maxHeight > document.body.clientHeight) {
-      offset = offsets.offset;
-      break;
-    } else {
-      offset = offsets.offset;
-    }
-  return offset;
-}
-
-const scrollHandler = (currentSection) => {
-  if (!currentSection) {
-    const scrollTop = window.pageYOffset;
-    const sections = document.querySelectorAll('section');
-    if (sections.length === 0)
-      return;
-    currentSection = sections[0];
-    for (let section of sections) {
-      if (scrollTop + document.body.offsetHeight * 3/4 > section.offsetTop) {
-        currentSection = section;
-      }
-    }
-  }
-  const lastScreen = store.getState().screen;
-  let offset = 0;
-  switch (currentSection.id) {
-    case 'name-section':
-      setScreen(0);
-      offset = getScrollOffset(0);
-      break;
-    case 'stack-section':
-      setScreen(1);
-      offset = getScrollOffset(1);
-      break;
-    case 'projects-section':
-      setScreen(2);
-      offset = getScrollOffset(2);
-      break;
-    case 'person-section':
-      setScreen(3);
-      offset = getScrollOffset(3);
-      break;
-    case 'messenger-section':
-      setScreen(4);
-      offset = getScrollOffset(4);
-      break;
-  }
-  if (lastScreen !== store.getState().screen && currentSection.id && store.getState().scrollReactions) {
-    console.log('scroll to #' + currentSection.id + ' with offset ' + offset);
-    EPPZScrollTo.scrollVerticalToElementById(currentSection.id, offset);
-  }
-}
-setTimeout(() => scrollHandler(document.querySelector('#name-section')), 0);
-export { scrollHandler };

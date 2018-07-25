@@ -4,11 +4,12 @@
   "description": "Site of Mikhail Kryuchkov",
   "main": "app.js",
   "scripts": {
-    "dev": "parcel watch src/index.pug",
-    "build": "parcel src/index.pug"
+    "start": "parcel src/index.pug",
+    "build": "parcel build src/index.pug",
+    "ssr-dev": "parcel watch ssr/src.js --out-file dist.js --out-dir ssr --target node",
+    "build-ssr": "node ssr/dist.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-redux": "4.4.9",

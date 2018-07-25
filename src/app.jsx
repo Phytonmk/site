@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { store, setScreen } from './redux-store.js';
 
@@ -22,13 +21,14 @@ class App extends React.Component {
   handleScroll (event) {scrollHandler()}
   render() {
     return (
-      <Provider store={store}>
-        <div id="provider-wrapper">
-         <Background />
-         <Sections />
-        </div>
-      </Provider>
+        <Provider store={store}>
+          <div id="provider-wrapper">
+             <Background />
+             <Sections />
+          </div>
+        </Provider>
     );
   }
 }
-ReactDOM.render(<App />, document.querySelector('#root'));
+
+export default App;

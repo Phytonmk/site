@@ -4,17 +4,17 @@ const projects = [
   {
     spriteYCoords: 73 * 0,
     title: 'Rubbish bin of Hackatons\' and other projects',
-    url: 'https//github.com/phytonmk'
+    url: 'https://github.com/phytonmk'
   },
   {
     spriteYCoords: 73 * 1,
     title: 'This site sourse code',
-    url: 'https//github.com/phytonmk/site'
+    url: 'https://github.com/phytonmk/site'
   },
   {
     spriteYCoords: 73 * 2,
-    title: 'Some fullstack JS project (will be published soon)',
-    url: '#'
+    title: 'Wealthman.io',
+    url: 'https://wealthman.io (as fullstack developer)'
   },
   {
     spriteYCoords: 73 * 3,

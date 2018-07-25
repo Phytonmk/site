@@ -44,7 +44,7 @@ const EPPZScrollTo =
 
         // Snap, then stop if arrived.
         const arrived = (Math.abs(difference) <= 0.5);
-        if (arrived)
+        if (arrived || Date.now() - global.lastScrollEvent < 5)
         {
             // Apply target.
             scrollTo(0.0, targetPosition);
